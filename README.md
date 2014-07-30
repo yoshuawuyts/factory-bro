@@ -2,15 +2,13 @@
 [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] 
 [![Test coverage][coveralls-image]][coveralls-url]
 
-A library for setting up JavaScript objects as test data.
-
 Defining fixtures is repetitive and prone to errors. Factory-bro helps you by
 allowing fixtures to be defined in a central hub. This allows you to spend more
 time coding, and less time updating tests.
 
 ## Installation
 ```bash
-$ npm i --save factory-bro
+$ npm i --save-dev factory-bro
 ```
 ## Overview
 ```js
@@ -87,15 +85,25 @@ factory.persist(function(data) {
 // Access a fixture and edit its values. Takes an optional argument of 
 // {Object} data. If applicable calls the function defined by .persist() after.
 
-factory.user();
-// persist -> {name: 'Tobi', age: 7, species: 'ferret'};
+var user = factory.user();
 
-factory.user({
+console.log(user);
+// => {name: 'Tobi', age: 7, species: 'ferret'}
+console.log(db);
+// => [{name: 'Tobi', age: 7, species: 'ferret'}];
+
+user = factory.user({
   name: 'Jane',
   age: 3
 });
-// persist -> {name: 'Jane', age: 3, species: 'ferret'}
 
+console.log(user);
+// => {name: 'Jane', age: 3, species: 'ferret'}
+console.log(db);
+// => [
+//      {name: 'Tobi', age: 7, species: 'ferret'},
+//      {name: 'Jane', age: 3, species: 'ferret'}
+//    ]
 ```
 
 ## License
