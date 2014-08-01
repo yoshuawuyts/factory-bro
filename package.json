@@ -1,7 +1,7 @@
 {
   "name": "factory-bro",
   "version": "0.1.2",
-  "description": "",
+  "description": "A library for setting up JavaScript objects as test data.",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha --recursive --harmony-generators -R spec",
